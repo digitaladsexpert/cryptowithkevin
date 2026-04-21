@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Crypto with Kevin</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 
- <!-- Meta Pixel Code -->
+<title>Kevin Community</title>
+
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -18,162 +19,109 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1866285480831006');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1866285480831006&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background:#f0f4f3;
-      color:#0b1220;
-      padding:20px;
-      display:flex;
-      justify-content:center;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-    .wrap{
-      width:100%;
-      max-width:1080px;
-      background:#fff;
-      border-radius:10px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      text-align:center;
-      padding:20px;
-    }
+body{
+  font-family:system-ui;
+  background:linear-gradient(135deg,#0f172a,#020617);
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+}
 
-    .top-banner{
-      background:#19a3f7;
-      color:#fff;
-      padding:8px 12px;
-      border-radius:8px;
-      font-weight:600;
-      margin-bottom:16px;
-    }
+.wrap{
+  max-width:950px;
+  width:100%;
+  background:#020617;
+  border-radius:14px;
+  padding:26px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
 
-    .logo{
-      width:90px;
-      height:90px;
-      border-radius:16px;
-      background:#e9f6ff;
-      margin:0 auto 14px;
-      overflow:hidden;
-    }
-    .logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
+.banner{
+  background:#0ea5e9;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:15px;
+  font-weight:600;
+}
 
-    .heading h1{
-      font-size:20px;
-      font-weight:700;
-      margin-bottom:6px;
-    }
-    .accent{color:#0aa3ff;}
+.logo{
+  width:90px;
+  height:90px;
+  margin:auto;
+  margin-bottom:15px;
+}
+.logo img{width:100%;border-radius:16px}
 
-    .sub-title{
-      color:#0b6b2e;
-      font-weight:700;
-      margin-bottom:6px;
-    }
+h1{
+  font-size:24px;
+  margin-bottom:10px;
+}
 
-    .stats{
-      margin-bottom:12px;
-      color:#444;
-      font-weight:600;
-    }
+.highlight{
+  color:#38bdf8;
+}
 
-    .desc{
-      padding:10px;
-      font-size:14px;
-      margin-bottom:16px;
-      color:#333;
-    }
-    .desc small{color:#777;}
+.sub{
+  color:#cbd5f5;
+  margin-bottom:18px;
+  font-size:15px;
+}
 
-    .btn-telegram{
-      background:linear-gradient(180deg,#0b7b2b,#045d1f);
-      color:#fff;
-      padding:14px 32px;
-      border-radius:40px;
-      font-weight:800;
-      font-size:18px;
-      text-decoration:none;
-      display:inline-block;
-      animation:pulseBtn 2s infinite ease-in-out;
-      box-shadow:0 0 20px rgba(11,123,43,0.4);
-      margin-bottom:14px;
-    }
+.bullets{
+  text-align:left;
+  margin:20px auto;
+  max-width:500px;
+}
 
-    @keyframes pulseBtn{
-      0%{transform:scale(1)}
-      50%{transform:scale(1.05)}
-      100%{transform:scale(1)}
-    }
+.bullets li{
+  margin-bottom:10px;
+  font-size:14px;
+}
 
-    .timer-row{
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      margin-bottom:14px;
-    }
-    .timer-pill{
-      background:#e6f5ff;
-      padding:8px 14px;
-      border-radius:20px;
-      font-weight:700;
-    }
+.btn{
+  display:inline-block;
+  padding:16px 34px;
+  background:linear-gradient(180deg,#22c55e,#15803d);
+  color:#fff;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+  margin-top:10px;
+  animation:pulse 2s infinite;
+}
 
-    .note{
-      font-size:14px;
-      color:#333;
-      margin-bottom:10px;
-    }
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
 
-    .footer{
-      margin-top:30px;
-      padding-top:20px;
-      border-top:1px solid #eee;
-      font-size:12.5px;
-      color:#555;
-      line-height:1.6;
-    }
+.note{
+  font-size:13px;
+  color:#94a3b8;
+  margin-top:10px;
+}
 
-    .footer-links{
-      margin-bottom:10px;
-    }
-    .footer-links a{
-      color:#0a84ff;
-      text-decoration:none;
-      font-weight:600;
-    }
+.footer{
+  margin-top:30px;
+  font-size:12px;
+  color:#94a3b8;
+  border-top:1px solid #1e293b;
+  padding-top:15px;
+  line-height:1.6;
+}
 
-    .risk-warning{
-      color:#b00020;
-      font-weight:600;
-      margin-bottom:8px;
-    }
-
-    .edu-note{
-      margin-bottom:8px;
-      color:#444;
-    }
-
-    .fb-disclaimer{
-      font-size:12px;
-      color:#777;
-      margin-top:10px;
-    }
-
-    .copyright{
-      margin-top:10px;
-      font-size:11.5px;
-      color:#888;
-    }
-  </style>
+.risk{
+  color:#f87171;
+  font-weight:600;
+}
+</style>
 
 </head>
 
@@ -181,113 +129,70 @@ src="https://www.facebook.com/tr?id=1866285480831006&ev=PageView&noscript=1"
 
 <div class="wrap">
 
-  <div class="top-banner">
-    Don’t Have Telegram? Join Our Free Community Now 🚀
-  </div>
+<div class="banner">
+🚀 Join a Growing Crypto Learning Community
+</div>
 
-  <div class="logo">
-    <img src="cwk.jpeg" alt="Crypto Logo">
-  </div>
+<div class="logo">
+<img src="cwk.jpeg">
+</div>
 
-  <div class="heading">
-    <h1>
-      Master Crypto Trading with  
-      <span class="accent">Kevin’s Pro Community</span>
-    </h1>
-  </div>
+<h1>
+Understand <span class="highlight">Crypto Markets</span> Without Guesswork
+</h1>
 
-  <div class="sub-title">
-    Free Signals • Live Market Analysis • Daily Profit Setups
-  </div>
+<div class="sub">
+Simple explanations • Market insights • Community learning
+</div>
 
-  <div class="stats">
-    15,000+ Active Members Joined
-  </div>
+<ul class="bullets">
+  <li>✔ Discover how crypto markets actually move</li>
+  <li>✔ See real-time market discussions & breakdowns</li>
+  <li>✔ Understand trading concepts used by market participants</li>
+  <li>✔ Learn how to read charts & market behavior</li>
+  <li>✔ Join a fast-growing crypto learning community</li>
+</ul>
 
-  <div class="desc">
-    Join one of the fastest-growing crypto communities.  
-    Get accurate signals, expert strategies & real-time updates.<br>
-    <small>
-      ⚠️ Educational purpose only • Market risk involved
-    </small>
-  </div>
+<a class="btn"
+href="https://t.me/+VMNt9NRH38k0MTk1"
+target="_blank"
+onclick="trackJoin(event)">
+🚀 Join Free on Telegram
+</a>
 
-  <!-- CTA BUTTON WITH SUBSCRIBE EVENT -->
-  <a class="btn-telegram" 
-     href="https://t.me/+VMNt9NRH38k0MTk1" 
-     target="_blank"
-     onclick="trackSubscribe(event)">
-    🚀 Join Now on Telegram
-  </a>
+<div class="note">
+Free access • No prior experience required
+</div>
 
-  <div class="timer-row">
-    <div class="timer-pill" id="minutes">10 Min</div>
-    <div class="timer-pill" id="seconds">00 Sec</div>
-  </div>
+<div class="footer">
 
-  <div class="note">
-    Click above button & join instantly — Limited time access ⏳
-  </div>
+<div class="risk">
 
-  <div class="footer">
 
-    <div class="footer-links">
-      Ads Managed By  
-      <a href="https://t.me/+ifc6dyg-xiA2ZGE1" target="_blank">
-        Digital Ads Expert
-      </a><br><br>
+This platform is for educational purposes only.  
 
-      <a href="https://ElitePips.online/privacy" target="_blank">Privacy Policy</a> •
-      <a href="https://ElitePips.online/disclaimer" target="_blank">Disclaimer</a> •
-      <a href="https://ElitePips.online/terms" target="_blank">Terms & Conditions</a>
-    </div>
+Users should conduct their own research before making decisions.
 
-    <div class="risk-warning">
-      ⚠️ Cryptocurrency trading involves high risk. You may lose your invested capital.
-    </div>
+<br><br>
 
-    <div class="edu-note">
-      This platform is for educational purposes only. We do not provide financial advice.
-    </div>
+This website is not affiliated with Facebook™, Instagram™, or Meta™.
 
-    <div class="fb-disclaimer">
-      This website is not affiliated with Facebook™, Instagram™, or Meta™.
-    </div>
+<br><br>
 
-    <div class="copyright">
-      © 2026 Crypto with Kevin. All Rights Reserved.
-    </div>
 
-  </div>
+
+</div>
 
 </div>
 
 <script>
-/* TIMER */
-let remaining = 10 * 60;
-const m = document.getElementById("minutes");
-const s = document.getElementById("seconds");
+function trackJoin(e){
+ e.preventDefault();
+ fbq('track','Subscribe');
 
-function updateTimer(){
-  if(remaining <= 0) return;
-  const min = Math.floor(remaining / 60);
-  const sec = remaining % 60;
-  m.textContent = (min < 10 ? "0"+min : min) + " Min";
-  s.textContent = (sec < 10 ? "0"+sec : sec) + " Sec";
-  remaining--;
-}
-updateTimer();
-setInterval(updateTimer, 1000);
-
-/* SUBSCRIBE EVENT TRACKING */
-function trackSubscribe(e){
-  e.preventDefault();
-
-  fbq('track', 'Subscribe');
-
-  setTimeout(function(){
-    window.open("https://t.me/+VMNt9NRH38k0MTk1", "_blank");
-  }, 300);
+ setTimeout(()=>{
+   window.open("https://t.me/+VMNt9NRH38k0MTk1","_blank");
+ },300);
 }
 </script>
 
