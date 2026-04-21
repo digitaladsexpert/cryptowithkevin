@@ -4,9 +4,118 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<title>Kevin Community</title>
+<title>Live Market Learning</title>
 
-<!-- Meta Pixel -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:system-ui;
+  background:linear-gradient(135deg,#020617,#0f172a);
+  color:#fff;
+  display:flex;
+  justify-content:center;
+}
+
+.wrap{
+  max-width:420px;
+  width:100%;
+  padding:22px;
+  text-align:center;
+}
+
+.logo img{
+  width:90px;
+  border-radius:18px;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.highlight{
+  color:#22c55e;
+}
+
+.sub{
+  color:#94a3b8;
+  margin-bottom:14px;
+  font-weight:600;
+}
+
+.fomo{
+  font-size:13px;
+  color:#facc15;
+  margin-bottom:12px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:16px;
+  border-radius:14px;
+  margin-bottom:16px;
+  backdrop-filter:blur(10px);
+}
+
+.point{
+  margin:8px 0;
+  font-size:14px;
+}
+
+.btn{
+  display:block;
+  background:linear-gradient(90deg,#22c55e,#16a34a);
+  padding:14px;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+  color:#fff;
+  margin-top:12px;
+  box-shadow:0 0 20px rgba(34,197,94,0.5);
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+.live{
+  margin-top:10px;
+  font-size:14px;
+  color:#facc15;
+}
+
+
+
+.footer-links{
+  margin-top:22px;
+  font-size:13px;
+  line-height:1.8;
+  color:#94a3b8;
+}
+
+.footer-links a{
+  color:#22c55e;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.footer-links a:hover{
+  text-decoration:underline;
+}
+
+.fb-disclaimer{
+  margin-top:14px;
+  font-size:11px;
+  color:#64748b;
+  line-height:1.5;
+}
+</style>
+
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,123 +125,21 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '1866285480831006');
 fbq('track', 'PageView');
+
+/* TRACK BUTTON CLICK */
+function trackJoin(){
+  fbq('track','Subscribe');
+}
 </script>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  font-family:system-ui;
-  background:linear-gradient(135deg,#0f172a,#020617);
-  color:#fff;
-  display:flex;
-  justify-content:center;
-  padding:20px;
-}
-
-.wrap{
-  max-width:950px;
-  width:100%;
-  background:#020617;
-  border-radius:14px;
-  padding:26px;
-  text-align:center;
-  box-shadow:0 10px 40px rgba(0,0,0,0.4);
-}
-
-.banner{
-  background:#0ea5e9;
-  padding:10px;
-  border-radius:8px;
-  margin-bottom:15px;
-  font-weight:600;
-}
-
-.logo{
-  width:90px;
-  height:90px;
-  margin:auto;
-  margin-bottom:15px;
-}
-.logo img{width:100%;border-radius:16px}
-
-h1{
-  font-size:24px;
-  margin-bottom:10px;
-}
-
-.highlight{
-  color:#38bdf8;
-}
-
-.sub{
-  color:#cbd5f5;
-  margin-bottom:18px;
-  font-size:15px;
-}
-
-.bullets{
-  text-align:left;
-  margin:20px auto;
-  max-width:500px;
-}
-
-.bullets li{
-  margin-bottom:10px;
-  font-size:14px;
-}
-
-.btn{
-  display:inline-block;
-  padding:16px 34px;
-  background:linear-gradient(180deg,#22c55e,#15803d);
-  color:#fff;
-  border-radius:40px;
-  font-weight:800;
-  text-decoration:none;
-  margin-top:10px;
-  animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.05)}
-  100%{transform:scale(1)}
-}
-
-.note{
-  font-size:13px;
-  color:#94a3b8;
-  margin-top:10px;
-}
-
-
-  .footer-links{
-      margin-bottom:10px;
-    }
-    .footer-links a{
-      color:#0a84ff;
-      text-decoration:none;
-      font-weight:600;
-    }
-
-  
-.footer{
-  margin-top:30px;
-  font-size:12px;
-  color:#94a3b8;
-  border-top:1px solid #1e293b;
-  padding-top:15px;
-  line-height:1.6;
-}
-
-.risk{
-  color:#f87171;
-  font-weight:600;
-}
-</style>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1866285480831006&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel -->
 
 </head>
 
@@ -140,85 +147,65 @@ h1{
 
 <div class="wrap">
 
-<div class="banner">
-🚀 Join a Growing Crypto Learning Community
-</div>
+  <div class="logo">
+    <img src="cwk.jpeg" alt="logo">
+  </div>
 
-<div class="logo">
-<img src="cwk.jpeg">
-</div>
+  <h1>📊 Live Market Learning <span class="highlight">Happening Now</span></h1>
 
-<h1>
-Understand <span class="highlight">Crypto Markets</span> Without Guesswork
-</h1>
+  <div class="sub">
+    Join others who are already watching and understanding real-time market movements
+  </div>
 
-<div class="sub">
-Simple explanations • Market insights • Community learning
-</div>
+  <!-- FOMO LINE -->
+  <div class="fomo">
+    🔴 Ongoing live sessions • New members joining daily
+  </div>
 
-<ul class="bullets">
-  <li>✔ Discover how crypto markets actually move</li>
-  <li>✔ See real-time market discussions & breakdowns</li>
-  <li>✔ Understand trading concepts used by market participants</li>
-  <li>✔ Learn how to read charts & market behavior</li>
-  <li>✔ Join a fast-growing crypto learning community</li>
-</ul>
+  <!-- EXTRA FOMO -->
+  <div style="font-size:12px;color:#22c55e;">
+    ✔ Limited active spots for live interaction
+  </div>
 
-<a class="btn"
-href="https://t.me/+VMNt9NRH38k0MTk1"
-target="_blank"
-onclick="trackJoin(event)">
-🚀 Join Free on Telegram
-</a>
+  <div class="card">
+    <div class="point">✔ See how markets move in real-time</div>
+    <div class="point">✔ Learn step-by-step price action explanation</div>
+    <div class="point">✔ Beginner-friendly environment</div>
+    <div class="point">✔ No signals • No tips • Only learning</div>
+  </div>
 
-<div class="note">
-Free access • No prior experience required
-</div>
+  <a class="btn" href="https://t.me/+VMNt9NRH38k0MTk1" target="_blank" onclick="trackJoin()">
+    🚀 Join Free Before Next Session Starts
+  </a>
 
+  <div class="live">
+    ⏳ Next live session can start anytime
+  </div>
 
+  <p style="font-size:12px;color:#94a3b8;margin-top:10px;">
+    ⚠️ Educational content only • Not financial advice
+  </p>
+
+ 
+
+  <!-- FOOTER -->
   <div class="footer-links">
-      Ads Managed By  
-      <a href="https://t.me/+ifc6dyg-xiA2ZGE1" target="_blank">
-        Digital Ads Expert
-      </a><br><br>
+    Managed By  
+    <a href="https://t.me/+ifc6dyg-xiA2ZGE1" target="_blank">Digital Ads Expert</a>
+    
+    <br><br>
 
-      <a href="https://ElitePips.online/privacy" target="_blank">Privacy Policy</a> •
-      <a href="https://ElitePips.online/disclaimer" target="_blank">Disclaimer</a> •
-      <a href="https://ElitePips.online/terms" target="_blank">Terms & Conditions</a>
-    </div>
-  
+    <a href="https://ElitePips.online/privacy" target="_blank">Privacy Policy</a> • 
+    <a href="https://ElitePips.online/disclaimer" target="_blank">Disclaimer</a> • 
+    <a href="https://ElitePips.online/terms" target="_blank">Terms</a>
+  </div>
 
-<div class="footer">
-
-<div class="risk">
-
-
-This platform is for educational purposes only.  
-
-Users should conduct their own research before making decisions.
-
-<br><br>
-
-This website is not affiliated with Facebook™, Instagram™, or Meta™.
-
-<br><br>
-
-
+  <div class="fb-disclaimer">
+    This site is not part of Facebook™ or Meta Platforms Inc.<br>
+    This site is NOT endorsed by Facebook™ in any way.
+  </div>
 
 </div>
-
-</div>
-
-<script>
-function trackJoin(e){
- e.preventDefault();
- fbq('track','Subscribe');
-
- setTimeout(()=>{
-   window.open("https://t.me/+VMNt9NRH38k0MTk1","_blank");
- },300);
-}
-</script>
 
 </body>
 </html>
