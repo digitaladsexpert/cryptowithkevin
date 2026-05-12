@@ -472,9 +472,37 @@ footer{
 
   <!-- CTA -->
   <div class="cta-wrap">
-    <a class="cta" href="https://t.me/+0VukvBW4ZohhODM1" target="_blank" rel="noopener" onclick="trackJoin()">
-      Join Free on Telegram →
-    </a>
+    <a
+  class="cta"
+  href="https://t.me/+0VukvBW4ZohhODM1"
+  target="_blank"
+  rel="noopener"
+  id="telegramJoinBtn"
+>
+  Join Free on Telegram →
+</a>
+
+<script>
+  const joinBtn = document.getElementById("telegramJoinBtn");
+
+  joinBtn.addEventListener("click", function () {
+    // Custom Subscribe Event
+    console.log("User subscribed via Telegram");
+
+    // Google Analytics 4
+    if (typeof gtag !== "undefined") {
+      gtag("event", "subscribe", {
+        method: "Telegram",
+        platform: "Telegram Channel"
+      });
+    }
+
+    // Meta Pixel
+    if (typeof fbq !== "undefined") {
+      fbq("track", "Subscribe");
+    }
+  });
+</script>
     <p class="cta-sub">⚠ Educational content only · Not financial advice</p>
   </div>
 
