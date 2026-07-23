@@ -3,97 +3,366 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>CWK — Gold Structure Trading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-.sk-box{
-  max-width:420px;
-  margin:30px auto;
-  background:linear-gradient(180deg,#ffffff,#f7f9ff);
-  padding:0 20px 22px;
-  border-radius:22px;
-  box-shadow:0 20px 45px rgba(0,0,0,.14);
-  font-family:Poppins,sans-serif;
-  text-align:center;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --emerald:#10b981;
+  --emerald-dark:#059669;
+  --emerald-glow:rgba(16,185,129,.25);
+  --gold:#c9a84c;
+  --gold-dim:rgba(201,168,76,.12);
+  --surface:#111113;
+  --surface-2:#18181b;
+  --surface-3:#1f1f23;
+  --border:rgba(255,255,255,.06);
+  --border-hover:rgba(255,255,255,.12);
+  --text-1:#fafafa;
+  --text-2:rgba(250,250,250,.55);
+  --text-3:rgba(250,250,250,.3);
 }
 
-.sk-logo{
-  width:74px;height:74px;
-  margin:22px auto 14px;
-  border-radius:50%;
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#09090b;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ── Ambient Background ── */
+.ambient{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
   overflow:hidden;
-  box-shadow:0 8px 18px rgba(30,136,229,.35);
 }
-.sk-logo img{width:100%;height:100%;object-fit:cover}
+.ambient .orb{
+  position:absolute;border-radius:50%;filter:blur(100px);
+}
+.ambient .orb-1{
+  width:500px;height:500px;top:-15%;left:-10%;
+  background:rgba(16,185,129,.06);
+  animation:drift1 20s ease-in-out infinite;
+}
+.ambient .orb-2{
+  width:400px;height:400px;bottom:-10%;right:-10%;
+  background:rgba(201,168,76,.05);
+  animation:drift2 25s ease-in-out infinite;
+}
+.ambient .orb-3{
+  width:300px;height:300px;top:40%;left:60%;
+  background:rgba(16,185,129,.03);
+  animation:drift3 18s ease-in-out infinite;
+}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,-40px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,25px)}}
 
-.sk-box h1{
-  font-size:23px;
-  margin:8px 0 6px;
-  font-weight:600;
+.noise{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:128px 128px;
 }
 
-.sk-sub{
-  font-size:14px;
-  color:#555;
+/* ── Main Container ── */
+.card{
+  position:relative;z-index:10;
+  max-width:460px;width:100%;
+  opacity:0;transform:translateY(24px);
+  animation:enter .7s cubic-bezier(.16,1,.3,1) .15s forwards;
+}
+@keyframes enter{to{opacity:1;transform:translateY(0)}}
+
+/* ── Top Bar ── */
+.top-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-bottom:none;
+  border-radius:20px 20px 0 0;
+}
+.top-bar-left{
+  display:flex;align-items:center;gap:10px;
+}
+.top-bar-avatar{
+  width:32px;height:32px;border-radius:50%;overflow:hidden;
+  border:1.5px solid var(--emerald);
+  box-shadow:0 0 12px var(--emerald-glow);
+}
+.top-bar-avatar img{width:100%;height:100%;object-fit:cover}
+.top-bar-name{
+  font-size:13px;font-weight:600;color:var(--text-1);
+  letter-spacing:-.2px;
+}
+.top-bar-name span{
+  display:block;font-size:10.5px;font-weight:400;
+  color:var(--text-3);margin-top:1px;
+}
+.live-dot{
+  display:flex;align-items:center;gap:6px;
+  font-size:10.5px;font-weight:500;color:var(--emerald);
+  text-transform:uppercase;letter-spacing:.6px;
+}
+.live-dot::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--emerald);
+  box-shadow:0 0 8px var(--emerald);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+/* ── Hero Section ── */
+.hero{
+  padding:36px 28px 32px;
+  background:var(--surface);
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
+  text-align:left;
+}
+
+.hero .tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10.5px;font-weight:600;
+  color:var(--gold);
+  text-transform:uppercase;letter-spacing:1px;
   margin-bottom:18px;
-  line-height:1.5;
+  padding:5px 10px;
+  background:var(--gold-dim);
+  border-radius:6px;
+  opacity:0;animation:fadeUp .5s ease .4s forwards;
+}
+.hero .tag i{font-size:8px}
+
+.hero h1{
+  font-size:28px;font-weight:800;
+  color:var(--text-1);
+  line-height:1.15;
+  letter-spacing:-.8px;
+  margin-bottom:16px;
+  opacity:0;animation:fadeUp .5s ease .5s forwards;
+}
+.hero h1 .accent{
+  background:linear-gradient(135deg,var(--emerald),#34d399);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 
-.sk-list{
-  list-style:none;
-  padding:0;
-  margin:18px 0;
+.hero p{
+  font-size:14px;color:var(--text-2);
+  line-height:1.7;
+  max-width:380px;
+  opacity:0;animation:fadeUp .5s ease .6s forwards;
 }
-.sk-list li{
-  font-size:14px;
-  margin-bottom:10px;
-  color:#333;
+.hero p strong{color:var(--text-1);font-weight:600}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.hero .tag,.hero h1,.hero p{transform:translateY(12px)}
+
+/* ── Value Props ── */
+.props{
+  padding:0 28px 28px;
+  background:var(--surface);
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
 }
 
-/* Button */
-.sk-btn{
-  display:block;
-  margin-top:24px;
-  padding:16px;
-  background:linear-gradient(135deg,#1e88e5,#1565c0);
+.prop-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
+  opacity:0;transform:translateY(10px);
+}
+.prop-row:last-child{border-bottom:none}
+.prop-row:nth-child(1){animation:fadeUp .4s ease .7s forwards}
+.prop-row:nth-child(2){animation:fadeUp .4s ease .8s forwards}
+.prop-row:nth-child(3){animation:fadeUp .4s ease .9s forwards}
+
+.prop-icon{
+  flex-shrink:0;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:10px;
+  background:var(--surface-3);
+  border:1px solid var(--border);
+  color:var(--emerald);
+  font-size:13px;
+  margin-top:2px;
+  transition:all .3s;
+}
+.prop-row:hover .prop-icon{
+  background:rgba(16,185,129,.1);
+  border-color:rgba(16,185,129,.2);
+  transform:scale(1.08);
+}
+
+.prop-text h3{
+  font-size:13.5px;font-weight:600;color:var(--text-1);
+  margin-bottom:3px;letter-spacing:-.1px;
+}
+.prop-text p{
+  font-size:12.5px;color:var(--text-2);line-height:1.55;
+}
+
+/* ── CTA Area ── */
+.cta-area{
+  padding:0 28px 24px;
+  background:var(--surface);
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
+  opacity:0;animation:fadeUp .5s ease 1s forwards;
+  transform:translateY(12px);
+}
+
+.cta-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;
+  padding:16px 24px;
+  background:var(--emerald);
   color:#fff;
   text-decoration:none;
   border-radius:14px;
-  font-weight:600;
-  letter-spacing:.3px;
-  transition:.3s ease;
-  box-shadow:0 12px 26px rgba(30,136,229,.45);
+  font-family:'Inter',sans-serif;
+  font-size:14.5px;
+  font-weight:700;
+  letter-spacing:-.1px;
+  border:none;cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s cubic-bezier(.16,1,.3,1);
+  box-shadow:0 6px 24px var(--emerald-glow),0 2px 6px rgba(0,0,0,.3);
 }
-
-.sk-btn:hover{
+.cta-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 50%);
+  opacity:0;transition:opacity .25s;
+}
+.cta-btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 16px 32px rgba(30,136,229,.55);
+  box-shadow:0 10px 36px rgba(16,185,129,.35),0 4px 10px rgba(0,0,0,.4);
+  background:#0ea572;
 }
+.cta-btn:hover::before{opacity:1}
+.cta-btn:active{transform:translateY(0) scale(.98)}
 
-.sk-note{
-  font-size:11px;
-  color:#666;
+.cta-btn i{
+  font-size:13px;
+  transition:transform .25s;
+}
+.cta-btn:hover i{transform:translateX(3px)}
+
+.cta-meta{
+  display:flex;align-items:center;justify-content:center;gap:14px;
   margin-top:14px;
-  line-height:1.6;
+  font-size:11px;color:var(--text-3);
+}
+.cta-meta span{
+  display:flex;align-items:center;gap:5px;
+}
+.cta-meta i{font-size:9px;color:var(--emerald)}
+
+/* ── Social Proof ── */
+.proof{
+  padding:18px 28px;
+  background:var(--surface-2);
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
+  display:flex;align-items:center;gap:16px;
+  opacity:0;animation:fadeUp .5s ease 1.1s forwards;
+  transform:translateY(12px);
+}
+.proof-avatars{
+  display:flex;
+}
+.proof-avatars div{
+  width:28px;height:28px;border-radius:50%;
+  border:2px solid var(--surface-2);
+  margin-left:-8px;
+  background:var(--surface-3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:600;color:var(--text-2);
+}
+.proof-avatars div:first-child{margin-left:0}
+.proof-avatars div:nth-child(1){background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.proof-avatars div:nth-child(2){background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.proof-avatars div:nth-child(3){background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff}
+.proof-avatars div:nth-child(4){background:linear-gradient(135deg,#ec4899,#db2777);color:#fff}
+
+.proof-text{
+  font-size:12px;color:var(--text-2);line-height:1.5;
+}
+.proof-text strong{color:var(--text-1);font-weight:600}
+
+/* ── Footer ── */
+.footer-bar{
+  padding:14px 20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-top:1px solid var(--border);
+  border-radius:0 0 20px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;
+  opacity:0;animation:fadeUp .5s ease 1.2s forwards;
+  transform:translateY(12px);
+}
+.footer-links{display:flex;gap:4px;font-size:11px}
+.footer-links a{
+  color:var(--text-3);text-decoration:none;
+  padding:3px 8px;border-radius:6px;
+  transition:all .2s;
+}
+.footer-links a:hover{color:var(--text-2);background:var(--surface-3)}
+.footer-credit{
+  font-size:10px;color:var(--text-3);
+}
+.footer-credit a{
+  color:var(--text-3);text-decoration:none;
+  transition:color .2s;
+}
+.footer-credit a:hover{color:var(--text-2)}
+
+/* ── Toast ── */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  z-index:100;
+  background:var(--surface-3);
+  border:1px solid var(--border-hover);
+  border-radius:12px;
+  padding:12px 20px;
+  display:flex;align-items:center;gap:10px;
+  font-size:12.5px;color:var(--text-1);
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s;
+  opacity:0;pointer-events:none;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+.toast i{color:var(--emerald);font-size:14px}
+
+/* ── Responsive ── */
+@media(max-width:480px){
+  .hero h1{font-size:24px}
+  .hero,.props,.cta-area,.proof{padding-left:22px;padding-right:22px}
+  .top-bar{padding:12px 16px}
+  .footer-bar{padding:12px 16px;flex-direction:column;align-items:flex-start}
 }
 
-.sk-footer{
-  margin-top:18px;
-  font-size:11px;
-  color:#777;
-  line-height:1.7;
-}
-
-.sk-footer a{
-  color:#1e88e5;
-  text-decoration:none;
-  font-weight:500;
-}
-
-.sk-managed{
-  margin-top:6px;
-  font-size:11px;
-  color:#555;
+/* ── Reduced Motion ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
 }
 </style>
 
@@ -103,7 +372,7 @@
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
+n.queue=[];t=b.createElement(e);t.async=!1;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
@@ -119,54 +388,118 @@ src="https://www.facebook.com/tr?id=1352427797080499&ev=PageView&noscript=1"
 
 <body>
 
-<div class="sk-box">
+<div class="ambient">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="noise"></div>
 
-  <div class="sk-logo">
-    <img src="cwk.jpeg" alt="S K Forex">
-  </div>
+<div class="card">
 
-  <h1>Crypto with Kevin</h1>
-
-  <div class="sk-sub">
-    Master <strong>XAUUSD (Gold)</strong> using market structure & rule-based trading<br>
-    ✅ Pure education for serious traders
-  </div>
-
-  <ul class="sk-list">
-    <li>✔ Decode Gold (XAUUSD) market structure clearly</li>
-    <li>✔ Learn <strong>when NOT to trade</strong></li>
-    <li>✔ Rule-based system (Beginner → Intermediate)</li>
-    <li>✔ Focused trader community — no hype</li>
-  </ul>
-
-  <a class="sk-btn"
-     href="https://t.me/+DBo18ibhKNoyNTQ9"
-     target="_blank"
-     rel="noopener noreferrer"
-     onclick="if(typeof fbq==='function'){fbq('track','Subscribe');}">
-     Continue to Private Telegram Classroom
-  </a>
-
-  <div class="sk-note">
-    Trading involves risk. This community focuses on learning only.<br>
-    🔒 No spam • Leave anytime
-  </div>
-
-  <div class="sk-footer">
-    <a href="https://elitepips.online/terms/" target="_blank">Terms</a> |
-    <a href="https://elitepips.online/privacy/" target="_blank">Privacy</a> |
-    <a href="https://elitepips.online/disclaimer/" target="_blank">Disclaimer</a>
-
-    <div class="sk-managed">
-      Advertised by
-      <a href="https://telegram.me/+ifc6dyg-xiA2ZGE1" target="_blank">
-        <strong>Digital Ads Expert</strong>
-      </a>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="top-bar-avatar">
+        <img src="cwk.jpeg" alt="CWK">
+      </div>
+      <div class="top-bar-name">
+        Crypto with Kevin
+        <span>Gold Structure Trading</span>
+      </div>
     </div>
-    <div>Not affiliated with Meta Platforms, Inc.</div>
+    <div class="live-dot">Active</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="tag"><i class="fas fa-bolt"></i> XAUUSD Focused</div>
+    <h1>Stop predicting.<br><span class="accent">Start reading</span> the chart.</h1>
+    <p>Most traders lose because they guess. This classroom teaches you to <strong>read Gold's structure</strong> — where it's likely to go and, more importantly, where to stay out.</p>
+  </div>
+
+  <!-- Value Props -->
+  <div class="props">
+    <div class="prop-row">
+      <div class="prop-icon"><i class="fas fa-sitemap"></i></div>
+      <div class="prop-text">
+        <h3>Structure, Not Indicators</h3>
+        <p>Learn to identify swing points, breaks, and invalidation levels — no lagging tools needed.</p>
+      </div>
+    </div>
+    <div class="prop-row">
+      <div class="prop-icon"><i class="fas fa-hand"></i></div>
+      <div class="prop-text">
+        <h3>The Power of Sitting Out</h3>
+        <p>Knowing when not to trade is what separates consistent traders from gamblers.</p>
+      </div>
+    </div>
+    <div class="prop-row">
+      <div class="prop-icon"><i class="fas fa-layer-group"></i></div>
+      <div class="prop-text">
+        <h3>Step-by-Step Framework</h3>
+        <p>From your first clean chart to executing structured setups — built for real progress, not shortcuts.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-area">
+    <a class="cta-btn"
+       href="https://t.me/+DBo18ibhKNoyNTQ9"
+       target="_blank"
+       rel="noopener noreferrer"
+       id="ctaLink">
+       Join the Telegram Classroom
+       <i class="fas fa-arrow-right"></i>
+    </a>
+    <div class="cta-meta">
+      <span><i class="fas fa-check"></i> Free access</span>
+      <span><i class="fas fa-check"></i> No spam, ever</span>
+      <span><i class="fas fa-check"></i> Leave anytime</span>
+    </div>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="proof">
+    <div class="proof-avatars">
+      <div>K</div><div>A</div><div>R</div><div>M</div>
+    </div>
+    <div class="proof-text">
+      <strong>Traders already inside</strong> — learning structure, sharing charts, staying disciplined.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-bar">
+    <div class="footer-links">
+      <a href="https://elitepips.online/terms/" target="_blank">Terms</a>
+      <a href="https://elitepips.online/privacy/" target="_blank">Privacy</a>
+      <a href="https://elitepips.online/disclaimer/" target="_blank">Disclaimer</a>
+    </div>
+    <div class="footer-credit">
+      Ads by <a href="https://telegram.me/+ifc6dyg-xiA2ZGE1" target="_blank">Digital Ads Expert</a> · Not affiliated with Meta
+    </div>
   </div>
 
 </div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">
+  <i class="fas fa-circle-check"></i>
+  <span>Redirecting to Telegram...</span>
+</div>
+
+<script>
+document.getElementById('ctaLink').addEventListener('click', function(e){
+  if(typeof fbq === 'function'){
+    fbq('track', 'Subscribe');
+  }
+  var toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(function(){ toast.classList.remove('show'); }, 3000);
+});
+</script>
 
 </body>
 </html>
